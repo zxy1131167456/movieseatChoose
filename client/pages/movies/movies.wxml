@@ -1,0 +1,38 @@
+<view class='head-title'>
+<view class='titles'>
+  <view class='title'>{{movieName}}\n</view>
+  <view class='times'>{{movieTimes}}</view>
+</view>
+<view class='line'></view>
+</view>
+<view class='head-seat'>
+<view class='seat'>
+<view class='seat1'><image src='../img/seat1.png'></image> <text decode="{{true}}">&nbsp;可选</text></view>
+<view class='seat2'><image src='../img/seat2.png'></image>  <text decode="{{true}}">&nbsp;已售</text></view>
+<view class='seat3'><view class='seat3-nice'></view> <text decode="{{true}}">&nbsp;最佳观影区</text></view>
+</view>
+</view>
+<view class='seat-change'>
+<view class='seat-change-title'>{{level}}楼{{room}}厅 银幕</view>
+<view class='seat-change1'>
+<view style='width:1rpx;height:550rpx;position:absolute;left:{{left}}px;border-right:1px dashed #000;'></view>
+<block wx:for="{{seatArr}}" wx:for-item="items" wx:for-index="id" wx:key="this">
+<block wx:for="{{items}}" wx:for-item="item" wx:for-index="id1" wx:key="this">
+<image src='{{item}}' data-index="{{id}}{{id1}}" style='margin-right:30rpx;margin-bottom:20rpx;' bindtap='seatChange'></image>
+</block>
+</block>
+</view>
+</view>
+<view class='seat-recommend'>
+<text>推荐座位：</text>
+<view class='seat-recommend1' style='background:{{seatrecommendBackground1}}'>1人</view>
+<view class='seat-recommend2' style='background:{{seatrecommendBackground2}}'>2人</view>
+<view class='seat-recommend3' style='background:{{seatrecommendBackground3}}'>3人</view>
+<view class='seat-recommend4' style='background:{{seatrecommendBackground4}}'>4人</view>
+</view>
+<view class='seat-chooseFinish' wx:if="{{num}}"><text>已选:</text><view wx:for="{{seatFinish}}" wx:for-item="item"  wx:for-index="id" wx:key="this">{{item.row}}排{{item.col}}座 <text style='color:orange'>￥{{price}}</text></view></view>
+<view class='seat-buy' style='opacity: {{opacity}}'>{{buy}}</view>
+<modal class="modal" hidden="{{modalHidden}}" no-cancel bindconfirm="modalChange" bindcancel="modalChange">
+<view> 提示!</view>
+<view> 一次最多选择4个座位!</view>
+</modal>

@@ -1,0 +1,5 @@
+.head-title{
+  width: 100%;
+  height:100rpx;
+  background: #e7e7e7;
+}
